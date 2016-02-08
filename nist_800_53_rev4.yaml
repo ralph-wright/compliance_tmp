@@ -78,17 +78,16 @@ compliance::nist_800_53_rev4::clamav::schedule_scan:
 compliance::nist_800_53_rev4::simp::security_profile:
   'identifier' : 'SI-3(b)'
 # TODO - Come back and figure what the heck this means, and then map it
-  'value' : 'simp'
+  'value' : 'stig'
 compliance::nist_800_53_rev4::simp::enable_filebucketing:
-  'identifier' : ['SI-3(b)']
-# TODO - Come back and figure what the heck this means, and then map it
+  'identifier' : ['SI-2(a)','SI-6(a)','SI-6(b)','SI-7','SI-7(1)']
   'value' : true
 compliance::nist_800_53_rev4::simp::admin::passwordless_admin_sudo:
-  'identifier' : 'IA-1(a)'
+  'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
   'notes' : 'Passwordless sudo for the administrators group is part of a larger default account managment strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
 compliance::nist_800_53_rev4::simp::admin::passwordless_auditor_sudo:
-  'identifier' : 'IA-1(a)'
+  'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
   'notes' : 'Passwordless sudo for the security group is part of a larger default account managment strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
 compliance::nist_800_53_rev4::simp::admin::force_sudosh:
@@ -99,8 +98,7 @@ compliance::nist_800_53_rev4::simp::kickstart_server::use_fip:
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::simp::puppetdb::client_nets:
-#TODO Controls start here
-  'identifier' : ['AC-4',
+  'identifier' : ['AC-4','AC-6']
   'value' : '127.0.0.1'
   'notes : "The only time this value should be changed is if there are multiple puppet masters' 
 compliance::nist_800_53_rev4::simp::puppetdb::disable_ssl:
@@ -146,4 +144,24 @@ compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::forward::log_tra
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : 'tcp'
   'notes' : 'This use of UDP should be justified'
-
+compliance::nist_800_53_rev4::simp::server::rsync_shares::use_stunnel:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_ldap:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_autofs:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_sudo:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_ssh:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::enumerate_users:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : false
+compliance::nist_800_53_rev4::simp::sssd::client::min_id:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : '501'
