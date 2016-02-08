@@ -91,7 +91,7 @@ compliance::nist_800_53_rev4::simp::admin::passwordless_auditor_sudo:
   'value' : true
   'notes' : 'Passwordless sudo for the security group is part of a larger default account managment strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
 compliance::nist_800_53_rev4::simp::admin::force_sudosh:
-  'identifier' : 'AC-6(9)'
+  'identifier' : ['AC-6(9)','AU-14','AU-14(2)']
   'value' : true
 # TODO This one probably exists somewhere else.  Check this before committing. 
 compliance::nist_800_53_rev4::simp::kickstart_server::use_fip:
@@ -105,36 +105,33 @@ compliance::nist_800_53_rev4::simp::puppetdb::disable_ssl:
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : 'false'
 compliance::nist_800_53_rev4::simp::server::allow_simp_user:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
+  'notes' : 'This is part of a larger default account managment strategy in SIMP.  The SIMP user provides a means for remote admistration in the event ldap is not configured or not working.'
 compliance::nist_800_53_rev4::simp::server:enable_rsync_shares:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['CM-2(2)','CM-4(3)']
   'value' : true
 compliance::nist_800_53_rev4::simp::yum::enable_auto_updates:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
   'value' : true
   'notes' : 'For this control to be fully applied, updated pacakges need to be applied to the configured yum repos'     
 compliance::nist_800_53_rev4::simp::nfs::sec:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : 'IA-2'
   'value' : 'none:sys'
 compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : "if \$programname == 'sudosh' or \$programname == 'yum' or \$syslogfacility-text == 'cron' or \$syslogfacility-text == 'authpriv' or \$syslogfacility-text == 'local5' or \$syslogfacility-text == 'local6' or \$syslogfacility-text == 'local7' or \$syslogpriority-text == 'emerg' or ( \$syslogfacility-text == 'kern' and \$msg startswith 'IPT:' ) then"
-  'notes' : 'If the default security relevant logs are changed, they should be justified, espeially if fewer than the SIMP default are configured'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['AU-2(a)','AU-2(d)','AU-3(2)','AU-14']
   'value' : "if \$programname == 'sudosh' or \$programname == 'yum' or \$syslogfacility-text == 'cron' or \$syslogfacility-text == 'authpriv' or \$syslogfacility-text == 'local5' or \$syslogfacility-text == 'local6' or \$syslogfacility-text == 'local7' or \$syslogpriority-text == 'emerg' or ( \$syslogfacility-text == 'kern' and \$msg startswith 'IPT:' ) then"
   'notes' : 'If the default security relevant logs are changed, they should be justified, espeially if fewer than the SIMP default are configured'
 compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate_period:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['AU-4','AU-11']
   'value' : 'weekly'
   'notes' : 'This value can vary according to storage capacity of a log server'
 compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['AU-4','AU-11']
   'value' : '12'
   'notes' : 'This value can vary according to storage capacity of a log server'
 compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::size:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'identifier' : ['AU-4','AU-11']
   'value' : ''
   'notes' : 'This value can vary according to storage capacity of a log server'
 compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::use_iptables:
