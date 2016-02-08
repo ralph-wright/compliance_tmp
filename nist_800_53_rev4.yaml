@@ -58,21 +58,21 @@ compliance::nist_800_53_rev4::auditd::failure_mode :
 compliance::nist_800_53_rev4::clamav::enable_clamav:
   'identifier' : ['SI-3(a)']
   'value' : true
-  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented']
+  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 compliance::nist_800_53_rev4::clamav::package_name:
   'identifier' : ['SI-3(a)']
   'value' : true
-  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented']
+  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 # Not sure if we should fail this one since freshclam requires full network access from all the clients.
 # Should we use rsync instead
 compliance::nist_800_53_rev4::clamav::enable_freshclam:
   'identifier' : ['SI-3(b)']
   'value' : true
-  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented']
+  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 compliance::nist_800_53_rev4::clamav::schedule_scan:
   'identifier' : ['SI-3(b)']
   'value' : true
-  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented']
+  'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 
 # simp module
 compliance::nist_800_53_rev4::simp::security_profile:
@@ -99,9 +99,51 @@ compliance::nist_800_53_rev4::simp::kickstart_server::use_fip:
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::simp::puppetdb::client_nets:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+#TODO Controls start here
+  'identifier' : ['AC-4',
   'value' : '127.0.0.1'
   'notes : "The only time this value should be changed is if there are multiple puppet masters' 
 compliance::nist_800_53_rev4::simp::puppetdb::disable_ssl:
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : '127.0.0.1'
+  'value' : 'false'
+compliance::nist_800_53_rev4::simp::server::allow_simp_user:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::server:enable_rsync_shares:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::yum::enable_auto_updates:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+  'notes' : 'For this control to be fully applied, updated pacakges need to be applied to the configured yum repos'     
+compliance::nist_800_53_rev4::simp::nfs::sec:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : 'none:sys'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : "if \$programname == 'sudosh' or \$programname == 'yum' or \$syslogfacility-text == 'cron' or \$syslogfacility-text == 'authpriv' or \$syslogfacility-text == 'local5' or \$syslogfacility-text == 'local6' or \$syslogfacility-text == 'local7' or \$syslogpriority-text == 'emerg' or ( \$syslogfacility-text == 'kern' and \$msg startswith 'IPT:' ) then"
+  'notes' : 'If the default security relevant logs are changed, they should be justified, espeially if fewer than the SIMP default are configured'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : "if \$programname == 'sudosh' or \$programname == 'yum' or \$syslogfacility-text == 'cron' or \$syslogfacility-text == 'authpriv' or \$syslogfacility-text == 'local5' or \$syslogfacility-text == 'local6' or \$syslogfacility-text == 'local7' or \$syslogpriority-text == 'emerg' or ( \$syslogfacility-text == 'kern' and \$msg startswith 'IPT:' ) then"
+  'notes' : 'If the default security relevant logs are changed, they should be justified, espeially if fewer than the SIMP default are configured'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate_period:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : 'weekly'
+  'notes' : 'This value can vary according to storage capacity of a log server'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : '12'
+  'notes' : 'This value can vary according to storage capacity of a log server'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::size:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : ''
+  'notes' : 'This value can vary according to storage capacity of a log server'
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::use_iptables:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::forward::log_transport:
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : 'tcp'
+  'notes' : 'This use of UDP should be justified'
+
