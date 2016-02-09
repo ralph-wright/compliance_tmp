@@ -55,110 +55,110 @@ compliance::nist_800_53_rev4::auditd::failure_mode :
   'value' : '2'
 
 #ClamAV
-compliance::nist_800_53_rev4::clamav::enable_clamav:
-  'identifier' : ['SI-3(a)']
+compliance::nist_800_53_rev4::clamav::enable_clamav :
+  'identifier' : 'SI-3(a)'
   'value' : true
   'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
-compliance::nist_800_53_rev4::clamav::package_name:
-  'identifier' : ['SI-3(a)']
-  'value' : true
+compliance::nist_800_53_rev4::clamav::package_name :
+  'identifier' : 'SI-3(a)'
+  'value' : 'clamav'
   'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 # Not sure if we should fail this one since freshclam requires full network access from all the clients.
 # Should we use rsync instead
-compliance::nist_800_53_rev4::clamav::enable_freshclam:
-  'identifier' : ['SI-3(b)']
+compliance::nist_800_53_rev4::clamav::enable_freshclam :
+  'identifier' : 'SI-3(b)'
   'value' : true
   'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
-compliance::nist_800_53_rev4::clamav::schedule_scan:
-  'identifier' : ['SI-3(b)']
+compliance::nist_800_53_rev4::clamav::schedule_scan :
+  'identifier' : 'SI-3(b)'
   'value' : true
   'notes' : 'If ClamAV is not used, alternate malicious code detection software should be implemented'
 
 # simp module
-compliance::nist_800_53_rev4::simp::security_profile:
+compliance::nist_800_53_rev4::simp::security_profile :
   'identifier' : 'SI-3(b)'
 # TODO - Come back and figure what the heck this means, and then map it
-  'value' : 'stig'
-compliance::nist_800_53_rev4::simp::enable_filebucketing:
+  'value' : 'stigs'
+compliance::nist_800_53_rev4::simp::enable_filebucketing :
   'identifier' : ['SI-2(a)','SI-6(a)','SI-6(b)','SI-7','SI-7(1)']
   'value' : true
-compliance::nist_800_53_rev4::simp::admin::passwordless_admin_sudo:
+compliance::nist_800_53_rev4::simp::admin::passwordless_admin_sudo :
   'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
-  'notes' : 'Passwordless sudo for the administrators group is part of a larger default account managment strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
-compliance::nist_800_53_rev4::simp::admin::passwordless_auditor_sudo:
+  'notes' : 'Passwordless sudo for the administrators group is part of a larger default account management strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
+compliance::nist_800_53_rev4::simp::admin::passwordless_auditor_sudo :
   'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
-  'notes' : 'Passwordless sudo for the security group is part of a larger default account managment strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
-compliance::nist_800_53_rev4::simp::admin::force_sudosh:
+  'notes' : 'Passwordless sudo for the security group is part of a larger default account management strategy in SIMP.  Setting this to false might not mean be a bad thing as long as the implementation can explain their account strategy'
+compliance::nist_800_53_rev4::simp::admin::force_sudosh :
   'identifier' : ['AC-6(9)','AU-14','AU-14(2)']
   'value' : true
 # TODO This one probably exists somewhere else.  Check this before committing. 
-compliance::nist_800_53_rev4::simp::kickstart_server::use_fip:
+compliance::nist_800_53_rev4::simp::kickstart_server::use_fip :
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
-compliance::nist_800_53_rev4::simp::puppetdb::client_nets:
+compliance::nist_800_53_rev4::simp::puppetdb::client_nets :
   'identifier' : ['AC-4','AC-6']
   'value' : '127.0.0.1'
   'notes : "The only time this value should be changed is if there are multiple puppet masters' 
-compliance::nist_800_53_rev4::simp::puppetdb::disable_ssl:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : 'false'
-compliance::nist_800_53_rev4::simp::server::allow_simp_user:
+compliance::nist_800_53_rev4::simp::puppetdb::disable_ssl :
+  'identifier' : ['SC-8','SC-8(1)','SC-8(2)','SC-13','SC-23']
+  'value' : false
+compliance::nist_800_53_rev4::simp::server::allow_simp_user :
   'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
   'value' : true
-  'notes' : 'This is part of a larger default account managment strategy in SIMP.  The SIMP user provides a means for remote admistration in the event ldap is not configured or not working.'
+  'notes' : 'This is part of a larger default account management strategy in SIMP.  The SIMP user provides a means for remote administration in the event ldap is not configured or not working.'
 compliance::nist_800_53_rev4::simp::server:enable_rsync_shares:
   'identifier' : ['CM-2(2)','CM-4(3)']
   'value' : true
-compliance::nist_800_53_rev4::simp::yum::enable_auto_updates:
+compliance::nist_800_53_rev4::simp::yum::enable_auto_updates :
   'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
   'value' : true
-  'notes' : 'For this control to be fully applied, updated pacakges need to be applied to the configured yum repos'     
-compliance::nist_800_53_rev4::simp::nfs::sec:
+  'notes' : 'For this control to be fully applied, updated packages need to be applied to the configured yum repos'
+compliance::nist_800_53_rev4::simp::nfs::sec :
   'identifier' : 'IA-2'
   'value' : 'none:sys'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs:
+compliance::nist_800_53_rev4::simp::rsyslog::stock::security_relevant_logs :
   'identifier' : ['AU-2(a)','AU-2(d)','AU-3(2)','AU-14']
   'value' : "if \$programname == 'sudosh' or \$programname == 'yum' or \$syslogfacility-text == 'cron' or \$syslogfacility-text == 'authpriv' or \$syslogfacility-text == 'local5' or \$syslogfacility-text == 'local6' or \$syslogfacility-text == 'local7' or \$syslogpriority-text == 'emerg' or ( \$syslogfacility-text == 'kern' and \$msg startswith 'IPT:' ) then"
   'notes' : 'If the default security relevant logs are changed, they should be justified, espeially if fewer than the SIMP default are configured'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate_period:
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate_period :
   'identifier' : ['AU-4','AU-11']
   'value' : 'weekly'
   'notes' : 'This value can vary according to storage capacity of a log server'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate:
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::rotate :
   'identifier' : ['AU-4','AU-11']
   'value' : '12'
   'notes' : 'This value can vary according to storage capacity of a log server'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::size:
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::size :
   'identifier' : ['AU-4','AU-11']
   'value' : ''
   'notes' : 'This value can vary according to storage capacity of a log server'
-compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::use_iptables:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::use_iptables :
+  'identifier' : ['AC-4','AC-6']
   'value' : true
-compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::forward::log_transport:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::forward::log_transport :
+  'identifier' : 'SI-13'
   'value' : 'tcp'
   'notes' : 'This use of UDP should be justified'
-compliance::nist_800_53_rev4::simp::server::rsync_shares::use_stunnel:
+compliance::nist_800_53_rev4::simp::server::rsync_shares::use_stunnel :
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
-compliance::nist_800_53_rev4::simp::sssd::client::use_ldap:
+compliance::nist_800_53_rev4::simp::sssd::client::use_ldap :
+  'identifier' : 'IA-2'
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_autofs :
+  'identifier' : 'IA-2'
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_sudo :
+  'identifier' : ['AC-6(9)','AU-14','AU-14(2)']
+  'value' : true
+compliance::nist_800_53_rev4::simp::sssd::client::use_ssh :
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
-compliance::nist_800_53_rev4::simp::sssd::client::use_autofs:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : true
-compliance::nist_800_53_rev4::simp::sssd::client::use_sudo:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : true
-compliance::nist_800_53_rev4::simp::sssd::client::use_ssh:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
-  'value' : true
-compliance::nist_800_53_rev4::simp::sssd::client::enumerate_users:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+compliance::nist_800_53_rev4::simp::sssd::client::enumerate_users :
+  'identifier' : 'IA-2'
   'value' : false
-compliance::nist_800_53_rev4::simp::sssd::client::min_id:
-  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
+compliance::nist_800_53_rev4::simp::sssd::client::min_id :
+  'identifier' : 'IA-2'
   'value' : '501'
