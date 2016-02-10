@@ -162,3 +162,28 @@ compliance::nist_800_53_rev4::simp::sssd::client::enumerate_users :
 compliance::nist_800_53_rev4::simp::sssd::client::min_id :
   'identifier' : 'IA-2'
   'value' : '501'
+
+#aide
+compliance::nist_800_53_rev4::aide::enable :
+  'identifier' : 'IA-2'
+  'value' : false
+compliance::nist_800_53_rev4::aide::default_rules :
+  'identifier' : 'IA-2'
+  'value' : false
+compliance::nist_800_53_rev4::aide::rotate_logs :
+  'identifier' : 'IA-2'
+  'value' : false
+compliance::nist_800_53_rev4::aide::to_syslog :
+  'identifier' : 'IA-2'
+  'value' : false
+compliance::nist_800_53_rev4::aide::use_auditd :
+  'identifier' : 'IA-2'
+  'value' : false
+compliance::nist_800_53_rev4::aide::logrotate::rotate_period :
+  'identifier' : 'IA-2'
+  'value' : 'weekly'
+compliance::nist_800_53_rev4::aide::logrotate::rotate_number :
+  'identifier' : 'IA-2'
+  'value' : '4'
+
+
