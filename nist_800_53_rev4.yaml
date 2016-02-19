@@ -126,10 +126,10 @@ compliance::nist_800_53_rev4::iptables::disable :
 # simp module
 compliance::nist_800_53_rev4::simp::enable_filebucketing :
   'identifier' : ['SI-2(a)','SI-6(a)','SI-6(b)','SI-7','SI-7(1)']
-  'value' : false
+  'value' : true
 compliance::nist_800_53_rev4::simp::admin::passwordless_admin_sudo :
   'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
-  'value' : false
+  'value' : true
   'notes' : 'Passwordless sudo for the administrators group is part of a larger default account management strategy in SIMP.  Setting this to false might not be a bad thing as long as the implementation can explain their account strategy'
 compliance::nist_800_53_rev4::simp::admin::passwordless_auditor_sudo :
   'identifier' : ['IA-1(a)(1)','IA-1(b)(1)']
@@ -174,7 +174,7 @@ compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::use_iptables :
 compliance::nist_800_53_rev4::simp::rsyslog::stock::log_server::forward::log_transport :
   'identifier' : 'SI-13'
   'value' : 'tcp'
-  'notes' : 'This use of UDP should be justified'
+  'notes' : 'The use of UDP should be justified'
 compliance::nist_800_53_rev4::simp::server::rsync_shares::use_stunnel :
   'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
@@ -291,7 +291,7 @@ compliance::nist_800_53_rev4::simplib::libuser_conf::import_default_useradd :
   'value' : '/etc/default/useradd'
 compliance::nist_800_53_rev4::simplib::libuser_conf::userdefaults :
   'identifier' : 'IA-2'
-  'value' : ['LU_USERNAME = %n LU_GIDNUMBER = %u']
+  'value' : "LU_USERNAME = %n\nLU_GIDNUMBER = %u"
 compliance::nist_800_53_rev4::simplib::libuser_conf::groupdefaults :
   'identifier' : 'IA-2'
   'value' : 'LU_GROUPNAME = %n'
