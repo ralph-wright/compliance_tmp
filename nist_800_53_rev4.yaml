@@ -565,3 +565,271 @@ compliance::nist_800_53_rev4::simplib::sysctl::net__ipv6__conf__default__router_
 compliance::nist_800_53_rev4::simplib::yum_schedule::repos :
   'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
   'value' : ['all']
+
+# logrotate
+compliance::nist_800_53_rev4::logrotate::manage_wtmp :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+
+# named
+compliance::nist_800_53_rev4::named::chroot_path :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : '/var/named/chroot'
+compliance::nist_800_53_rev4::named::bind_dns_rsync :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : 'default'
+compliance::nist_800_53_rev4::named::service::chroot :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+
+# ntpd
+compliance::nist_800_53_rev4::ntpd::log_opts :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : ['=syncall','+clockall']
+
+#openldap
+compliance::nist_800_53_rev4::openldap::use_nscd :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : false
+compliance::nist_800_53_rev4::openldap::client::tls_cacertdir :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : '/etc/pki/cacerts'
+compliance::nist_800_53_rev4::openldap::client::tls_reqcert :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : 'allow'
+compliance::nist_800_53_rev4::openldap::pam::start_tls :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+compliance::nist_800_53_rev4::openldap::pam::use_auditd :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+compliance::nist_800_53_rev4::openldap::pam::bind_policy :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : 'hard'
+compliance::nist_800_53_rev4::openldap::pam::pam_member_attribute :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : 'memberUid'
+compliance::nist_800_53_rev4::openldap::pam::ssl :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+compliance::nist_800_53_rev4::openldap::pam::ssl :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+compliance::nist_800_53_rev4::openldap::pam::tls_ciphers :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : "[\n'HIGH',\n'SSLv2']"
+compliance::nist_800_53_rev4::openldap::pam::validnames :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : '/^[a-z0-9._@$()][a-z0-9._@$() \~-]+[a-z0-9._@$()~-]$/i'
+compliance::nist_800_53_rev4::openldap::pam::nss_initgroups_ignoreusers :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : ['root','bin','daemon','adm','lp','mail','operator','nobody','dbus','ntp','saslauth','postfix','sshd','puppet','stunnel','nscd','haldaemon','clamav','rpcuser','rpc','clam','nfsnobody','rpm','nslcd','avahi','gdm','rtkit','pulse','hsqldb','radvd','apache','tomcat']
+compliance::nist_800_53_rev4::openldap::server::schema_sync :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::schema_source :
+  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'value' : 'puppet:///modules/openldap/etc/openldap/schema'
+compliance::nist_800_53_rev4::openldap::server::host_auth_user :
+  'identifier' : 'IA-1'
+  'value' : 'hostAuth'
+compliance::nist_800_53_rev4::openldap::server::use_ppolicy :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::use_tcpwrappers :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::use_tcpwrappers :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::syncdn :
+  'identifier' : 'IA-1'
+  'value' : 'LDAPAdmin,ou=People'
+compliance::nist_800_53_rev4::openldap::server::conf::audit_to_syslog :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::auditlog :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::auditlog_rotate :
+  'identifier' : 'IA-1'
+  'value' : 'daily'
+compliance::nist_800_53_rev4::openldap::server::conf::auditlog_preserve :
+  'identifier' : 'IA-1'
+  'value' : '7'
+compliance::nist_800_53_rev4::openldap::server::conf::authz_policy :
+  'identifier' : 'IA-1'
+  'value' : 'to'
+compliance::nist_800_53_rev4::openldap::server::conf::authz_regexp :
+  'identifier' : 'IA-1'
+  'value' : 'to'
+compliance::nist_800_53_rev4::openldap::server::conf::audit_transactions :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::authz_regexp :
+  'identifier' : 'IA-1'
+  'value' : [{'match'   => '^uid=([^,]+),.*','replace' => "uid=\$1,ou=People,${::openldap::base_dn}"}]
+compliance::nist_800_53_rev4::openldap::server::conf::bind_anon :
+  'identifier' : 'IA-1'
+  'value' : false
+compliance::nist_800_53_rev4::openldap::server::conf::conn_max_pending :
+  'identifier' : 'IA-1'
+  'value' : '100'
+compliance::nist_800_53_rev4::openldap::server::conf::conn_max_pending_auth :
+  'identifier' : 'IA-1'
+  'value' : '100'
+compliance::nist_800_53_rev4::openldap::server::conf::default_schemas :
+  'identifier' : 'IA-1'
+  'value' : ['openssh-lpk','freeradius','autofs']
+compliance::nist_800_53_rev4::openldap::server::conf::disallow :
+  'identifier' : 'IA-1'
+  'value' : ['bind_anon','tls_2_anon']
+compliance::nist_800_53_rev4::openldap::server::conf::listen_ldaps :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::slapd_logLevel :
+  'identifier' : 'IA-1'
+  'value' : ['stats', 'acl', 'sync']
+compliance::nist_800_53_rev4::openldap::server::conf::password_crypt_salt_format :
+  'identifier' : 'IA-1'
+  'value' : '%s'
+compliance::nist_800_53_rev4::openldap::server::conf::password_hash :
+  'identifier' : 'IA-1'
+  'value' : 'SSHA'
+compliance::nist_800_53_rev4::openldap::server::conf::security :
+  'identifier' : 'IA-1'
+  'value' : 'ssf=256 tls=256 update_ssf=256 simple_bind=256 update_tls=256'
+compliance::nist_800_53_rev4::openldap::server::conf::use_tls :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::enable_iptables :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_age :
+  'identifier' : 'IA-1'
+  'value' : '86400'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_age :
+  'identifier' : 'IA-1'
+  'value' : '15552000'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_in_history :
+  'identifier' : 'IA-1'
+  'value' : '24'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_check_quality :
+  'identifier' : 'IA-1'
+  'value' : '2'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_length :
+  'identifier' : 'IA-1'
+  'value' : '14'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_expire_warning :
+  'identifier' : 'IA-1'
+  'value' : '1209600'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_grace_authn_limit :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_lockout :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_lockout_duration :
+  'identifier' : 'IA-1'
+  'value' : '900'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_max_failure :
+  'identifier' : 'IA-1'
+  'value' : '5'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_failure_count_interval :
+  'identifier' : 'IA-1'
+  'value' : '900'
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_must_change :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_allow_user_change :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_safe_modify :
+  'identifier' : 'IA-1'
+  'value' : false
+
+# pam
+compliance::nist_800_53_rev4::pam::cracklib_difok :
+  'identifier' : 'IA-1'
+  'value' : '4'
+compliance::nist_800_53_rev4::pam::cracklib_maxrepeat :
+  'identifier' : 'IA-1'
+  'value' : '2'
+compliance::nist_800_53_rev4::pam::cracklib_maxsequence :
+  'identifier' : 'IA-1'
+  'value' : '4'
+compliance::nist_800_53_rev4::pam::cracklib_maxclassrepeat :
+  'identifier' : 'IA-1'
+  'value' : '0'
+compliance::nist_800_53_rev4::pam::cracklib_reject_username :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::pam::cracklib_gecoscheck :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::pam::cracklib_enforce_for_root :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::pam::cracklib_dcredit :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::pam::cracklib_ucredit :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::pam::cracklib_lcredit :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::pam::cracklib_ocredit :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::pam::cracklib_minclass :
+  'identifier' : 'IA-1'
+  'value' : '-1'
+compliance::nist_800_53_rev4::pam::cracklib_minlen :
+  'identifier' : 'IA-1'
+  'value' : '14'
+compliance::nist_800_53_rev4::pam::cracklib_retry :
+  'identifier' : 'IA-1'
+  'value' : '3'
+compliance::nist_800_53_rev4::pam::deny :
+  'identifier' : 'IA-1'
+  'value' : '5'
+compliance::nist_800_53_rev4::pam::display_account_lock :
+  'identifier' : 'IA-1'
+  'value' : false
+compliance::nist_800_53_rev4::pam::homedir_umask :
+  'identifier' : 'IA-1'
+  'value' : '0077'
+compliance::nist_800_53_rev4::pam::remember :
+  'identifier' : 'IA-1'
+  'value' : '24'
+compliance::nist_800_53_rev4::pam::root_unlock_time :
+  'identifier' : 'IA-1'
+  'value' : '60'
+compliance::nist_800_53_rev4::pam::rounds :
+  'identifier' : 'IA-1'
+  'value' : '10000'
+compliance::nist_800_53_rev4::pam::uid :
+  'identifier' : 'IA-1'
+  'value' : '500'
+compliance::nist_800_53_rev4::pam::unlock_time :
+  'identifier' : 'IA-1'
+  'value' : '900'
+compliance::nist_800_53_rev4::pam::fail_interval :
+  'identifier' : 'IA-1'
+  'value' : '900'
+compliance::nist_800_53_rev4::pam::preserve_ac :
+  'identifier' : 'IA-1'
+  'value' : false
+compliance::nist_800_53_rev4::pam::deny_if_unknown :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::pam::use_netgroups :
+  'identifier' : 'IA-1'
+  'value' : false
+compliance::nist_800_53_rev4::pam::wheel::wheel_group :
+  'identifier' : 'IA-1'
+  'value' : 'wheel'
+compliance::nist_800_53_rev4::pam::wheel::root_only :
+  'identifier' : 'IA-1'
+  'value' : true
