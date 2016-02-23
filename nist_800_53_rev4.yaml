@@ -568,7 +568,7 @@ compliance::nist_800_53_rev4::simplib::yum_schedule::repos :
 
 # logrotate
 compliance::nist_800_53_rev4::logrotate::manage_wtmp :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
   'value' : true
 
 # named
@@ -580,7 +580,7 @@ compliance::nist_800_53_rev4::named::bind_dns_rsync :
   'value' : 'default'
 compliance::nist_800_53_rev4::named::service::chroot :
   'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
-  'value' : true
+  'value' : false
 
 # ntpd
 compliance::nist_800_53_rev4::ntpd::log_opts :
@@ -617,7 +617,7 @@ compliance::nist_800_53_rev4::openldap::pam::ssl :
   'value' : true
 compliance::nist_800_53_rev4::openldap::pam::tls_ciphers :
   'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
-  'value' : "[\n'HIGH',\n'SSLv2']"
+  'value' : ['HIGH','-SSLv2']
 compliance::nist_800_53_rev4::openldap::pam::validnames :
   'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
   'value' : '/^[a-z0-9._@$()][a-z0-9._@$() \~-]+[a-z0-9._@$()~-]$/i'
@@ -639,18 +639,12 @@ compliance::nist_800_53_rev4::openldap::server::use_ppolicy :
 compliance::nist_800_53_rev4::openldap::server::use_tcpwrappers :
   'identifier' : 'IA-1'
   'value' : true
-compliance::nist_800_53_rev4::openldap::server::use_tcpwrappers :
-  'identifier' : 'IA-1'
-  'value' : true
-compliance::nist_800_53_rev4::openldap::server::conf::syncdn :
-  'identifier' : 'IA-1'
-  'value' : 'LDAPAdmin,ou=People'
 compliance::nist_800_53_rev4::openldap::server::conf::audit_to_syslog :
   'identifier' : 'IA-1'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog :
   'identifier' : 'IA-1'
-  'value' : true
+  'value' : '/var/log/slapd.audit'
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog_rotate :
   'identifier' : 'IA-1'
   'value' : 'daily'
@@ -666,9 +660,6 @@ compliance::nist_800_53_rev4::openldap::server::conf::authz_regexp :
 compliance::nist_800_53_rev4::openldap::server::conf::audit_transactions :
   'identifier' : 'IA-1'
   'value' : true
-compliance::nist_800_53_rev4::openldap::server::conf::authz_regexp :
-  'identifier' : 'IA-1'
-  'value' : [{'match'   => '^uid=([^,]+),.*','replace' => "uid=\$1,ou=People,${::openldap::base_dn}"}]
 compliance::nist_800_53_rev4::openldap::server::conf::bind_anon :
   'identifier' : 'IA-1'
   'value' : false
@@ -708,7 +699,7 @@ compliance::nist_800_53_rev4::openldap::server::conf::enable_iptables :
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_age :
   'identifier' : 'IA-1'
   'value' : '86400'
-compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_age :
+compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_max_age :
   'identifier' : 'IA-1'
   'value' : '15552000'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_in_history :
@@ -784,7 +775,7 @@ compliance::nist_800_53_rev4::pam::cracklib_ocredit :
   'value' : '-1'
 compliance::nist_800_53_rev4::pam::cracklib_minclass :
   'identifier' : 'IA-1'
-  'value' : '-1'
+  'value' : '3'
 compliance::nist_800_53_rev4::pam::cracklib_minlen :
   'identifier' : 'IA-1'
   'value' : '14'
@@ -832,4 +823,4 @@ compliance::nist_800_53_rev4::pam::wheel::wheel_group :
   'value' : 'wheel'
 compliance::nist_800_53_rev4::pam::wheel::root_only :
   'identifier' : 'IA-1'
-  'value' : true
+  'value' : false
