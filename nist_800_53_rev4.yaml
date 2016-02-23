@@ -64,7 +64,7 @@ compliance::nist_800_53_rev4::aide::default_rules :
   'identifier' : ['SI-7','SI-7(1)','SI-7(2)','SI-7(3)','SI-7(8)']
   'value' : ''
 compliance::nist_800_53_rev4::aide::rotate_logs :
-  'identifier' : ['SI-7','SI-7(1)','SI-7(2)','SI-7(3)','SI-7(8)']
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
   'value' : true
 compliance::nist_800_53_rev4::aide::to_syslog :
   'value' : true
@@ -573,101 +573,98 @@ compliance::nist_800_53_rev4::logrotate::manage_wtmp :
 
 # named
 compliance::nist_800_53_rev4::named::chroot_path :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'AC-6'
   'value' : '/var/named/chroot'
 compliance::nist_800_53_rev4::named::bind_dns_rsync :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'AC-6'
   'value' : 'default'
 compliance::nist_800_53_rev4::named::service::chroot :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'AC-6'
   'value' : false
 
 # ntpd
-compliance::nist_800_53_rev4::ntpd::log_opts :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+compliance::nist_800_53_rev4::ntpd::logconfig :
+  'identifier' : ['AU-2','AU-3']
   'value' : ['=syncall','+clockall']
 
 #openldap
 compliance::nist_800_53_rev4::openldap::use_nscd :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-1'
   'value' : false
 compliance::nist_800_53_rev4::openldap::client::tls_cacertdir :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : '/etc/pki/cacerts'
 compliance::nist_800_53_rev4::openldap::client::tls_reqcert :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : 'allow'
 compliance::nist_800_53_rev4::openldap::pam::start_tls :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::openldap::pam::use_auditd :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
   'value' : true
 compliance::nist_800_53_rev4::openldap::pam::bind_policy :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-1'
   'value' : 'hard'
 compliance::nist_800_53_rev4::openldap::pam::pam_member_attribute :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['IA-4(b)','IA-4(c)']
   'value' : 'memberUid'
 compliance::nist_800_53_rev4::openldap::pam::ssl :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::openldap::pam::ssl :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::openldap::pam::tls_ciphers :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : ['HIGH','-SSLv2']
 compliance::nist_800_53_rev4::openldap::pam::validnames :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-4'
   'value' : '/^[a-z0-9._@$()][a-z0-9._@$() \~-]+[a-z0-9._@$()~-]$/i'
 compliance::nist_800_53_rev4::openldap::pam::nss_initgroups_ignoreusers :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-1'
   'value' : ['root','bin','daemon','adm','lp','mail','operator','nobody','dbus','ntp','saslauth','postfix','sshd','puppet','stunnel','nscd','haldaemon','clamav','rpcuser','rpc','clam','nfsnobody','rpm','nslcd','avahi','gdm','rtkit','pulse','hsqldb','radvd','apache','tomcat']
 compliance::nist_800_53_rev4::openldap::server::schema_sync :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-1'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::schema_source :
-  'identifier' : ['CM-3(3)','CM-11(b)','SI-2(c)']
+  'identifier' : 'IA-1'
   'value' : 'puppet:///modules/openldap/etc/openldap/schema'
 compliance::nist_800_53_rev4::openldap::server::host_auth_user :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-2'
   'value' : 'hostAuth'
 compliance::nist_800_53_rev4::openldap::server::use_ppolicy :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::use_tcpwrappers :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-4'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::audit_to_syslog :
-  'identifier' : 'IA-1'
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog :
-  'identifier' : 'IA-1'
+  'identifier' : 'Au-3'
   'value' : '/var/log/slapd.audit'
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog_rotate :
-  'identifier' : 'IA-1'
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
   'value' : 'daily'
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog_preserve :
-  'identifier' : 'IA-1'
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
   'value' : '7'
 compliance::nist_800_53_rev4::openldap::server::conf::authz_policy :
   'identifier' : 'IA-1'
   'value' : 'to'
-compliance::nist_800_53_rev4::openldap::server::conf::authz_regexp :
-  'identifier' : 'IA-1'
-  'value' : 'to'
 compliance::nist_800_53_rev4::openldap::server::conf::audit_transactions :
-  'identifier' : 'IA-1'
+  'identifier' : 'AU-2'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::bind_anon :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-6'
   'value' : false
 compliance::nist_800_53_rev4::openldap::server::conf::conn_max_pending :
-  'identifier' : 'IA-1'
+  'identifier' : 'SC-5'
   'value' : '100'
 compliance::nist_800_53_rev4::openldap::server::conf::conn_max_pending_auth :
-  'identifier' : 'IA-1'
+  'identifier' : 'SC-5'
   'value' : '100'
 compliance::nist_800_53_rev4::openldap::server::conf::default_schemas :
   'identifier' : 'IA-1'
@@ -676,138 +673,138 @@ compliance::nist_800_53_rev4::openldap::server::conf::disallow :
   'identifier' : 'IA-1'
   'value' : ['bind_anon','tls_2_anon']
 compliance::nist_800_53_rev4::openldap::server::conf::listen_ldaps :
-  'identifier' : 'IA-1'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::slapd_logLevel :
-  'identifier' : 'IA-1'
+  'identifier' : 'AU-3'
   'value' : ['stats', 'acl', 'sync']
 compliance::nist_800_53_rev4::openldap::server::conf::password_crypt_salt_format :
-  'identifier' : 'IA-1'
+  'identifier' : ['IA-5(c)','IA-1(c)']
   'value' : '%s'
 compliance::nist_800_53_rev4::openldap::server::conf::password_hash :
-  'identifier' : 'IA-1'
+  'identifier' : ['IA-5(c)','IA-1(c)']
   'value' : 'SSHA'
 compliance::nist_800_53_rev4::openldap::server::conf::security :
-  'identifier' : 'IA-1'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : 'ssf=256 tls=256 update_ssf=256 simple_bind=256 update_tls=256'
 compliance::nist_800_53_rev4::openldap::server::conf::use_tls :
-  'identifier' : 'IA-1'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-13','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::enable_iptables :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-4'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_age :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(d)'
   'value' : '86400'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_max_age :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(d)'
   'value' : '15552000'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_in_history :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(e)'
   'value' : '24'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_check_quality :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '2'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_min_length :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '14'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_expire_warning :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(d)'
   'value' : '1209600'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_grace_authn_limit :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(d)'
   'value' : '-1'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_lockout :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_lockout_duration :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(b)'
   'value' : '900'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_max_failure :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(a)'
   'value' : '5'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_failure_count_interval :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(b)'
   'value' : '900'
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_must_change :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(f)'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_allow_user_change :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7'
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::default_ldif::ppolicy_pwd_safe_modify :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7'
   'value' : false
 
 # pam
 compliance::nist_800_53_rev4::pam::cracklib_difok :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '4'
 compliance::nist_800_53_rev4::pam::cracklib_maxrepeat :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '2'
 compliance::nist_800_53_rev4::pam::cracklib_maxsequence :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '4'
 compliance::nist_800_53_rev4::pam::cracklib_maxclassrepeat :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '0'
 compliance::nist_800_53_rev4::pam::cracklib_reject_username :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : true
 compliance::nist_800_53_rev4::pam::cracklib_gecoscheck :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : true
 compliance::nist_800_53_rev4::pam::cracklib_enforce_for_root :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5'
   'value' : true
 compliance::nist_800_53_rev4::pam::cracklib_dcredit :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '-1'
 compliance::nist_800_53_rev4::pam::cracklib_ucredit :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '-1'
 compliance::nist_800_53_rev4::pam::cracklib_lcredit :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '-1'
 compliance::nist_800_53_rev4::pam::cracklib_ocredit :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '-1'
 compliance::nist_800_53_rev4::pam::cracklib_minclass :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '3'
 compliance::nist_800_53_rev4::pam::cracklib_minlen :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(a)'
   'value' : '14'
 compliance::nist_800_53_rev4::pam::cracklib_retry :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(a)'
   'value' : '3'
 compliance::nist_800_53_rev4::pam::deny :
   'identifier' : 'IA-1'
   'value' : '5'
 compliance::nist_800_53_rev4::pam::display_account_lock :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7'
   'value' : false
 compliance::nist_800_53_rev4::pam::homedir_umask :
-  'identifier' : 'IA-1'
+  'identifier' : ['AC-2','AC-2(4)','AC-6']
   'value' : '0077'
 compliance::nist_800_53_rev4::pam::remember :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(1)(e)'
   'value' : '24'
 compliance::nist_800_53_rev4::pam::root_unlock_time :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(b)'
   'value' : '60'
 compliance::nist_800_53_rev4::pam::rounds :
-  'identifier' : 'IA-1'
+  'identifier' : 'IA-5(c)'
   'value' : '10000'
 compliance::nist_800_53_rev4::pam::uid :
   'identifier' : 'IA-1'
   'value' : '500'
 compliance::nist_800_53_rev4::pam::unlock_time :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(b)'
   'value' : '900'
 compliance::nist_800_53_rev4::pam::fail_interval :
-  'identifier' : 'IA-1'
+  'identifier' : 'AC-7(b)'
   'value' : '900'
 compliance::nist_800_53_rev4::pam::preserve_ac :
   'identifier' : 'IA-1'
@@ -823,4 +820,4 @@ compliance::nist_800_53_rev4::pam::wheel::wheel_group :
   'value' : 'wheel'
 compliance::nist_800_53_rev4::pam::wheel::root_only :
   'identifier' : 'IA-1'
-  'value' : false
+  'value' : true
