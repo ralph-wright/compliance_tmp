@@ -643,7 +643,7 @@ compliance::nist_800_53_rev4::openldap::server::conf::audit_to_syslog :
   'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
   'value' : true
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog :
-  'identifier' : 'Au-3'
+  'identifier' : 'AU-3'
   'value' : '/var/log/slapd.audit'
 compliance::nist_800_53_rev4::openldap::server::conf::auditlog_rotate :
   'identifier' : ['AU-4','AU-5(b)','AU-11']
@@ -820,4 +820,117 @@ compliance::nist_800_53_rev4::pam::wheel::wheel_group :
   'value' : 'wheel'
 compliance::nist_800_53_rev4::pam::wheel::root_only :
   'identifier' : 'IA-1'
+  'value' : false
+
+# pki
+compliance::nist_800_53_rev4::pki::enable_audit :
+  'identifier' : ['AU-3(2)','AU-4(1)','AU-9']
   'value' : true
+
+# postfix
+compliance::nist_800_53_rev4::postfix::enable_server :
+  'identifier' : 'CM-7'
+  'value' : false
+compliance::nist_800_53_rev4::postfix::server::enable_iptables :
+  'identifier' : 'AC-4'
+  'value' : true
+compliance::nist_800_53_rev4::postfix::server::enable_user_connect :
+  'identifier' : 'AC-1'
+  'value' : true
+compliance::nist_800_53_rev4::postfix::server::enable_tls :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::postfix::server::enforce_tls :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::postfix::server::mandatory_ciphers :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::postfix::server::enable_simp_pki :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+
+# pupmod
+compliance::nist_800_53_rev4::pupmod::auditd_support :
+  'identifier' : ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : true
+compliance::nist_800_53_rev4::pupmod::ca_crl_pull_interval :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : '2'
+compliance::nist_800_53_rev4::pupmod::confdir :
+  'identifier' : 'CM-6'
+  'value' : '/etc/puppet'
+compliance::nist_800_53_rev4::pupmod::daemonize :
+  'identifier' : 'CM-6'
+  'value' : false
+compliance::nist_800_53_rev4::pupmod::digest_algorithm :
+  'identifier' : ['SI-7','SI-7(1)','SI-7(6)']
+  'value' : 'sha256'
+compliance::nist_800_53_rev4::pupmod::environmentpath :
+  'identifier' : 'CM-6'
+  'value' : '/etc/puppet/environments'
+compliance::nist_800_53_rev4::pupmod::logdir :
+  'identifier' : 'AU-3'
+  'value' : '/var/log/puppet'
+compliance::nist_800_53_rev4::pupmod::vardir :
+  'identifier' : 'CM-6'
+  'value' : '/var/lib/puppet'
+compliance::nist_800_53_rev4::pupmod::syslogfacility :
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : 'local6'
+compliance::nist_800_53_rev4::pupmod::master::bind_address :
+  'identifier' : 'CM-7'
+  'value' : '0.0.0.0'
+compliance::nist_800_53_rev4::pupmod::master::ca_bind_address :
+  'identifier' : 'CM-7'
+  'value' : '0.0.0.0'
+compliance::nist_800_53_rev4::pupmod::master::daemonize :
+  'identifier' : 'CM-6'
+  'value' : true
+compliance::nist_800_53_rev4::pupmod::master::environmentpath :
+  'identifier' : 'CM-6'
+  'value' : '/etc/puppet/environments'
+compliance::nist_800_53_rev4::pupmod::master::use_iptables :
+  'identifier' : 'CM-7'
+  'value' : true
+compliance::nist_800_53_rev4::pupmod::master::ssl_protocols :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : ['TLSv1','TLSv1.1','TLSv1.2']
+compliance::nist_800_53_rev4::pupmod::master::log_to_syslog :
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : true
+compliance::nist_800_53_rev4::pupmod::master::syslog_message_format :
+  'identifier' : 'AU-2'
+  'value' : '%logger[%thread]: %msg'
+compliance::nist_800_53_rev4::pupmod::master::reports::purge :
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
+  'value' : true
+compliance::nist_800_53_rev4::pupmod::master::reports::purge_keep_days :
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
+  'value' : '7'
+compliance::nist_800_53_rev4::pupmod::master::sysconfig::java_max_memory :
+  'identifier' : ['SC-5','CM-6']
+  'value' : '80%'
+compliance::nist_800_53_rev4::pupmod::master::sysconfig::java_max_perm_size :
+  'identifier' : ['SC-5','CM-6']
+  'value' : '256m'
+compliance::nist_800_53_rev4::pupmod::agent::cron::interval :
+  'identifier' : 'CM-3(3)'
+  'value' : '30'
+  'notes' : 'Changing this interval should not impact security unless the value is very low or very high.'
+compliance::nist_800_53_rev4::pupmod::agent::cron::run_timeframe :
+  'identifier' : 'CM-3(3)'
+  'value' : '60'
+  'notes' : 'Changing this interval should not impact security unless the value is very low or very high.'
+compliance::nist_800_53_rev4::pupmod::agent::cron::hour :
+  'identifier' : 'CM-3(3)'
+  'value' : '*'
+compliance::nist_800_53_rev4::pupmod::agent::cron::monthday :
+  'identifier' : 'CM-3(3)'
+  'value' : '*'
+compliance::nist_800_53_rev4::pupmod::agent::cron::month :
+  'identifier' : 'CM-3(3)'
+  'value' : '*'
+compliance::nist_800_53_rev4::pupmod::agent::cron::weekday :
+  'identifier' : 'CM-3(3)'
+  'value' : '*'
