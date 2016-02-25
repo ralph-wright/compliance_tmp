@@ -934,3 +934,138 @@ compliance::nist_800_53_rev4::pupmod::agent::cron::month :
 compliance::nist_800_53_rev4::pupmod::agent::cron::weekday :
   'identifier' : 'CM-3(3)'
   'value' : '*'
+
+# rsync
+compliance::nist_800_53_rev4::rsync::server::use_stunnel :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::rsync::server::global::address : 
+  'identifier' : 'CM-7'
+  'value' : '127.0.0.1'
+
+# rsyslog
+compliance::nist_800_53_rev4::rsyslog::rule_dir :
+  'identifier' : 'CM-6'
+  'value' : '/etc/rsyslog.simp.d'
+  'notes' : 'Changing this value will move the location of the default simp rules'
+compliance::nist_800_53_rev4::rsyslog::enable_logrotate :
+  'identifier' : ['AU-4','AU-5(b)','AU-11']
+  'value' : true
+compliance::nist_800_53_rev4::rsyslog::config::umask :
+  'identifier' : ['AC-2','AC-2(4)','AC-6']
+  'value' : '0027'
+compliance::nist_800_53_rev4::rsyslog::config::preserve_fqdn :
+  'identifier' : 'AU-3'
+  'value' : true
+compliance::nist_800_53_rev4::rsyslog::config::main_msg_queue_type :
+  'identifier' : 'AU-5(b)'
+  'value' : 'LinkedList'
+compliance::nist_800_53_rev4::rsyslog::config::main_msg_queue_save_on_shutdown :
+  'identifier' : 'AU-5(b)'
+  'value' : 'on'
+compliance::nist_800_53_rev4::rsyslog::config::enable_default_rules :
+  'identifier' : 'AU-4(1)'
+  'value' : true
+compliance::nist_800_53_rev4::rsyslog::server::enable_firewall :
+  'identifier' : 'AU-4(1)'
+  'value' : true
+compliance::nist_800_53_rev4::rsyslog::server::enable_selinux :
+  'identifier' : 'AC-3(3)'
+  'value' : true
+compliance::nist_800_53_rev4::rsyslog::server::enable_tcpwrappers :
+  'identifier' : 'AC-4'
+  'value' : true
+
+# selinux
+compliance::nist_800_53_rev4::selinux::ensure :
+  'identifier' : 'AC-3(3)'
+  'value' : 'enforcing'
+compliance::nist_800_53_rev4::selinux::mode :
+  'identifier' : 'AC-3(3)'
+  'value' : 'targeted'
+
+# ssh
+compliance::nist_800_53_rev4::ssh::enable_client :
+  'identifier' : ['AC-17','AC-17(2)']
+  'value' : false
+compliance::nist_800_53_rev4::ssh::enable_client :
+  'identifier' : ['AC-17','AC-17(2)']
+  'value' : true
+compliance::nist_800_53_rev4::ssh::client::add_default_entry :
+  'identifier' : ['AC-2(1)','AC-6','AC-17(2)','IA-7','SC-8','SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+  'notes' : 'If the default entry is not used, each of the values for the ssh client config should be evaluated'
+compliance::nist_800_53_rev4::ssh::server::use_system_pki :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::ssh::server::conf::authorizedkeysfile :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : '/etc/ssh/local_keys/%u'
+compliance::nist_800_53_rev4::ssh::server::conf::authorizedkeyscommanduser :
+  'identifier' : 'IA-1'
+  'value' : 'nobody'
+compliance::nist_800_53_rev4::ssh::server::conf::banner :
+  'identifier' : 'AC-8'
+  'value' : '/etc/issue.net'
+compliance::nist_800_53_rev4::ssh::server::conf::challengeresponseauthentication :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : false
+compliance::nist_800_53_rev4::ssh::server::conf::enable_fallback_ciphers :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::ssh::server::conf::syslogfacility :
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : 'AUTHPRIV'
+compliance::nist_800_53_rev4::ssh::server::conf::gssapiauthentication :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : false
+compliance::nist_800_53_rev4::ssh::server::conf::permitemptypasswords :
+  'identifier' : 'IA-5(1)(a)'
+  'value' : false
+compliance::nist_800_53_rev4::ssh::server::conf::permitrootlogin :
+  'identifier' : ['AC-6(2)','AC-6(5)']
+  'value' : false
+compliance::nist_800_53_rev4::ssh::server::conf::usepam :
+  'identifier' : 'IA-5'
+  'value' : true
+compliance::nist_800_53_rev4::ssh::server::conf::useprivilegeseparation :
+  'identifier' : ['AC-3','AC-6']
+  'value' : true
+compliance::nist_800_53_rev4::ssh::server::conf::x11forwarding :
+  'identifier' : 'CM-7'
+  'value' : false
+compliance::nist_800_53_rev4::ssh::server::conf::use_tcpwrappers :
+  'identifier' : 'AC-4'
+  'value' : true
+
+# sssd
+compliance::nist_800_53_rev4::sssd::services :
+  'identifier' : 'IA-1'
+  'value' : ['nss','pam','ssh','sudo']
+compliance::nist_800_53_rev4::sssd::enable_auditd :
+  'identifier' : ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : true
+compliance::nist_800_53_rev4::sssd::enable_pki :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::sssd::use_simp_pki :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : true
+compliance::nist_800_53_rev4::sssd::cert_source :
+  'identifier' : ['SC-8(1)','SC-8(2)','SC-23']
+  'value' : '/etc/sssd/pki'
+compliance::nist_800_53_rev4::sssd::install::install_user_tools :
+  'identifier' : 'IA-1'
+  'value' : true
+compliance::nist_800_53_rev4::sssd::service::pam::offline_failed_login_attempts :
+  'identifier' : 'AC-12'
+  'value' : '3'
+compliance::nist_800_53_rev4::sssd::service::pam::offline_failed_login_delay :
+  'identifier' : 'AC-7(b)'
+  'value' : '5'
+compliance::nist_800_53_rev4::sssd::service::pam::pam_id_timeout :
+  'identifier' : 'AC-7(b)'
+  'value' : '5'
+compliance::nist_800_53_rev4::sssd::service::pam::pam_pwd_expiration_warning :
+  'identifier' : 'IA-5(1)(d)'
+  'value' : '7'
