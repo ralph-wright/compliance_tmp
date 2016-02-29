@@ -1069,3 +1069,114 @@ compliance::nist_800_53_rev4::sssd::service::pam::pam_id_timeout :
 compliance::nist_800_53_rev4::sssd::service::pam::pam_pwd_expiration_warning :
   'identifier' : 'IA-5(1)(d)'
   'value' : '7'
+compliance::nist_800_53_rev4::sssd::service::ssh::ssh_hash_known_hosts :
+  'identifier' : ['IA-5(c)','IA-5(h)']
+  'value' : true
+compliance::nist_800_53_rev4::sssd::provider::ldap::ldap_chpass_updates_last_change :
+  'identifier' : 'IA-5(1)(d)'
+  'value' : true
+
+# stunnel
+compliance::nist_800_53_rev4::stunnel::chroot :
+  'identifier' : 'AC-6'
+  'value' : '/var/stunnel'
+compliance::nist_800_53_rev4::stunnel::setuid :
+  'identifier' : 'IA-5(1)(d)'
+  'value' : 'stunnel'
+compliance::nist_800_53_rev4::stunnel::setgid :
+  'identifier' : 'AC-6'
+  'value' : 'stunnel'
+compliance::nist_800_53_rev4::stunnel::syslog :
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
+  'value' : true
+compliance::nist_800_53_rev4::stunnel::add::ca_path :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : '/etc/pki/cacerts'
+compliance::nist_800_53_rev4::stunnel::add::ciphers :
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
+  'value' : ['HIGH','-SSLv2']
+compliance::nist_800_53_rev4::stunnel::add::use_iptables :
+  'identifier' :  'AC-4'
+  'value' : true
+
+# tpm
+compliance::nist_800_53_rev4::tpm::ima::enable :
+  'identifier' :  ['AC-25','SI-7(9)']
+  'value' : true
+compliance::nist_800_53_rev4::tpm::ima::mount_dir :
+  'identifier' :  ['AC-25','SI-7(9)']
+  'value' : '/sys/kernel/security'
+compliance::nist_800_53_rev4::tpm::ima::ima_audit :
+  'identifier' :  ['AC-25','SI-7(9)']
+  'value' : true
+compliance::nist_800_53_rev4::tpm::ima::ima_tcb :
+  'identifier' :  ['AC-25','SI-7(9)']
+  'value' : true
+
+# upstart
+compliance::nist_800_53_rev4::upstart::disable_ctrl_alt_del :
+  'identifier' :  'AC-6'
+  'value' : true
+
+# vsftpd
+compliance::nist_800_53_rev4::vsftpd::manage_user :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::manage_group :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::ssl_enable :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::require_ssl_reuse :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::userlist_enable :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::validate_cert :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::vsftpd_user :
+  'identifier' :  'AC-6'
+  'value' : 'ftp'
+compliance::nist_800_53_rev4::vsftpd::config::force_local_data_ssl :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::config::force_local_logins_ssl :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::config::ssl_ciphers :
+  'identifier' :  'AC-6'
+  'value' : ['HIGH']
+compliance::nist_800_53_rev4::vsftpd::config::ssl_tlsv1 :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::vsftpd::config::banner_file :
+  'identifier' :  'AC-6'
+  'value' : '/etc/issue.net'
+compliance::nist_800_53_rev4::vsftpd::config::local_umask :
+  'identifier' :  'AC-6'
+  'value' : '022'
+compliance::nist_800_53_rev4::vsftpd::config::syslog_enable :
+  'identifier' :  'AC-6'
+  'value' : true
+
+# windowmanager
+compliance::nist_800_53_rev4::windowmanager::gnome::include_sec :
+  'identifier' :  'AC-6'
+  'value' : true
+
+# xinetd
+compliance::nist_800_53_rev4::xinetd::log_type :
+  'identifier' :  'AC-6'
+  'value' : 'SYSLOG authpriv'
+compliance::nist_800_53_rev4::xinetd::banner :
+  'identifier' :  'AC-6'
+  'value' : '/etc/issue.net'
+
+
+# svckill
+#compliance::nist_800_53_rev4::svckill::default_ignore :
+#  'identifier' :  'AC-4'
+##  'value' : '1/usr/local/etc/svckill.ignore'
