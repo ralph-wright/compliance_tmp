@@ -1120,46 +1120,46 @@ compliance::nist_800_53_rev4::upstart::disable_ctrl_alt_del :
 
 # vsftpd
 compliance::nist_800_53_rev4::vsftpd::manage_user :
-  'identifier' :  'AC-6'
+  'identifier' :  ['AC-6','IA-2']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::manage_group :
-  'identifier' :  'AC-6'
+  'identifier' :  ['AC-6','IA-2']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::ssl_enable :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::require_ssl_reuse :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::userlist_enable :
-  'identifier' :  'AC-6'
+  'identifier' :  ['AC-6','IA-2']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::validate_cert :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::vsftpd_user :
-  'identifier' :  'AC-6'
+  'identifier' :  ['AC-6','IA-2']
   'value' : 'ftp'
 compliance::nist_800_53_rev4::vsftpd::config::force_local_data_ssl :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::config::force_local_logins_ssl :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::config::ssl_ciphers :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : ['HIGH']
 compliance::nist_800_53_rev4::vsftpd::config::ssl_tlsv1 :
-  'identifier' :  'AC-6'
+  'identifier' : ['SC-8', 'SC-8(1)','SC-8(2)','SC-23']
   'value' : true
 compliance::nist_800_53_rev4::vsftpd::config::banner_file :
-  'identifier' :  'AC-6'
+  'identifier' : 'AC-8'
   'value' : '/etc/issue.net'
 compliance::nist_800_53_rev4::vsftpd::config::local_umask :
   'identifier' :  'AC-6'
   'value' : '022'
 compliance::nist_800_53_rev4::vsftpd::config::syslog_enable :
-  'identifier' :  'AC-6'
+  'identifier' :  ['AU-3(2)','AU-4(1)','AU-9']
   'value' : true
 
 # windowmanager
@@ -1174,6 +1174,50 @@ compliance::nist_800_53_rev4::xinetd::log_type :
 compliance::nist_800_53_rev4::xinetd::banner :
   'identifier' :  'AC-6'
   'value' : '/etc/issue.net'
+
+# apache
+compliance::nist_800_53_rev4::apache::ssl :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::apache::conf::user :
+  'identifier' :  'AC-6'
+  'value' : 'apache'
+compliance::nist_800_53_rev4::apache::conf::group :
+  'identifier' :  'AC-6'
+  'value' : 'apache'
+compliance::nist_800_53_rev4::apache::conf::logformat :
+  'identifier' :  'AC-6'
+  'value' : '%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"'
+compliance::nist_800_53_rev4::apache::conf::logfacility :
+  'identifier' :  'AC-6'
+  'value' : 'local6'
+compliance::nist_800_53_rev4::apache::conf::rsyslog_target :
+  'identifier' :  'AC-6'
+  'value' : '/var/log/httpd'
+compliance::nist_800_53_rev4::apache::ssl::ssl_protocols :
+  'identifier' :  'AC-6'
+  'value' : ['TLSv1','TLSv1.1','TLSv1.2']
+compliance::nist_800_53_rev4::apache::ssl::ssl_honor_cipher_order :
+  'identifier' :  'AC-6'
+  'value' : 'on'
+compliance::nist_800_53_rev4::apache::ssl::sslverifyclient :
+  'identifier' :  'AC-6'
+  'value' : 'require'
+compliance::nist_800_53_rev4::apache::ssl::sslverifydepth :
+  'identifier' :  'AC-6'
+  'value' : '10'
+compliance::nist_800_53_rev4::apache::ssl::sslcacertificatepath :
+  'identifier' :  'AC-6'
+  'value' : '/etc/httpd/conf/pki/cacerts'
+compliance::nist_800_53_rev4::apache::ssl::logformat :
+  'identifier' :  'AC-6'
+  'value' : '%t %h \%{SSL_CLIENT_S_DN_CN}x \%{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b %s'
+compliance::nist_800_53_rev4::apache::ssl::enable_iptables :
+  'identifier' :  'AC-6'
+  'value' : true
+compliance::nist_800_53_rev4::apache::ssl::use_simp_pki :
+  'identifier' :  'AC-6'
+  'value' : true
 
 
 # svckill
